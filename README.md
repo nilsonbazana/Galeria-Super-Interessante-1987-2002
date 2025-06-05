@@ -1,4 +1,4 @@
-# Galeria-Super-Interessante-1987-2002
+# Galeria Revista Super Interessante 1987 - 2002
 Link para leitura NA ÍNTEGRA dos exemplares de SET/1987 a JUN/2002 (#0 a #177) da conceituada revista de divulgação científica.
 Período este considerado, pelos leitores mais "raiz", como a "época dourada" do editorial da revista - então comandado pelo visionário
 editor-fundador Almyr Gajardoni - https://pt.wikipedia.org/wiki/Almyr_Gajardoni

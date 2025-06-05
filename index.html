@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Interessante Gallery - Dark Theme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1e1e1e; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-title {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            margin-top: 30px;
+            margin-bottom: 10px; /* Adjusted margin for subtitle */
+            color: #ffffff; /* Brighter white for main title */
+            font-weight: 700;
+            font-size: 2.2em;
+        }
+
+        .main-subtitle { /* New class for the subtitle */
+            text-align: center;
+            color: #cccccc; /* Slightly dimmer than main text, fits well */
+            font-size: 1.1em;
+            font-weight: 400; /* Normal weight */
+            margin-top: 0; /* Reduced space after main title */
+            margin-bottom: 30px; /* Space before the gallery starts */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1080px; /* (160px width + 20px margin) * 6 = 1080px */
+            margin: 0 auto; /* Center the gallery */
+            padding: 0 10px; /* Padding for gallery container if screen is smaller */
+            justify-content: flex-start; /* Align items to the start */
+        }
+
+        .year-header {
+            width: 100%;
+            flex-basis: 100%; /* Ensures it takes full width, starting a new line */
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #f5f5f5; /* Slightly brighter for year headers */
+            font-weight: 700;
+            font-size: 1.8em;
+            border-bottom: 1px solid #444444; /* Darker border */
+            padding-bottom: 10px;
+        }
+
+        .thumbnail {
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            width: 160px;        /* Thumbnail container width */
+            margin: 10px;        /* Margin around each thumbnail (total 20px horizontal space) */
+            text-align: center;
+            background-color: #2a2a2a; /* Slightly lighter dark shade for thumbnail card */
+            border-radius: 6px;
+            padding: 10px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .thumbnail img {
+            width: 100%; /* Make image responsive within the thumbnail padding */
+            max-width: 130px; /* Original image is 150px, allow some padding from the 160px thumbnail width */
+            height: auto;
+            border: 1px solid #444444; /* Darker border for images */
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .thumbnail p {
+            margin-top: 0;
+            font-size: 0.85em;
+            line-height: 1.4em;
+            color: #cccccc; /* Lighter text for thumbnail details */
+        }
+
+        .thumbnail a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Links inherit text color from parent */
+        }
+
+        /* Styling for links in general, if needed elsewhere */
+        a {
+            color: #8ab4f8; /* A pleasant blue for links in dark mode */
+        }
+        a:hover {
+            color: #a1c9fa;
+        }
+
+        /* Suggestions for other modern sans-serif fonts:
+           - Roboto: font-family: 'Roboto', sans-serif;
+           - Open Sans: font-family: 'Open Sans', sans-serif;
+           - Lato: font-family: 'Lato', sans-serif;
+           - Montserrat: font-family: 'Montserrat', sans-serif;
+           - Nunito: font-family: 'Nunito', sans-serif;
+        */
+    </style>
+</head>
+<body>
+    <h1 class="main-title">Galeria Super Interessante</h1>
+    <h3 class="main-subtitle">Exemplar 0 ao 177 (1987-2002)</h3>
+    <div class="gallery">
+        <script>
+            const galleryDiv = document.querySelector('.gallery');
+            const portugueseMonths = [
+                "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+            ];
+
+            const baseYear = 1987;
+            const baseMonthIndex = 8; // September (0-indexed)
+
+            let currentYearProcessed = null;
+
+            // Loop from Issue 0 to Issue 177 (inclusive, 178 items total)
+            for (let i = 0; i <= 177; i++) {
+                let issueNumberPadded = i.toString().padStart(3, '0');
+                
+                let currentDate = new Date(baseYear, baseMonthIndex, 1);
+                currentDate.setMonth(baseMonthIndex + i);
+
+                let monthName = portugueseMonths[currentDate.getMonth()];
+                let year = currentDate.getFullYear();
+                let dateString = `${monthName} de ${year}`;
+
+                if (year !== currentYearProcessed) {
+                    currentYearProcessed = year;
+                    const yearHeader = document.createElement('h1');
+                    yearHeader.classList.add('year-header');
+                    yearHeader.textContent = year;
+                    galleryDiv.appendChild(yearHeader);
+                }
+
+                const thumbnailDiv = document.createElement('div');
+                thumbnailDiv.classList.add('thumbnail');
+
+                const link = document.createElement('a');
+                link.href = `https://archive.org/details/super-interessante/Super%20Interessante%20${i}/mode/2up`;
+                link.target = "_blank"; 
+                link.title = `Ver Edição ${i} (${dateString}) no Archive.org`; // Added title for better accessibility
+
+                const img = document.createElement('img');
+                img.src = `https://super.abril.com.br/wp-content/uploads/2016/09/g_capa_${issueNumberPadded}.jpg`;
+                img.alt = `Capa da Super Interessante Edição ${i} - ${dateString}`;
+                img.onerror = function() {
+                    this.alt = `Imagem não disponível para Edição ${i}`;
+                    this.style.height = 'auto'; // Let it take natural height or a min-height
+                    this.style.minHeight = '130px'; // Match approx image height
+                    this.style.width = '100%'; // Take full width of its space
+                    this.style.maxWidth = '130px';
+                    this.style.border = '1px dashed #777';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.style.fontSize = '12px';
+                    this.style.padding = '5px'; // Add some padding to the error text
+                    this.style.boxSizing = 'border-box';
+                    this.textContent = `Capa ${issueNumberPadded} indisponível`; // Show text inside the img area
+                    // this.parentElement.innerHTML += '<p style="font-size:10px; color: #999;">Capa indisponível</p>'; // Old way
+                    this.src = ''; // Prevent broken image icon
+                };
+
+                const paragraph = document.createElement('p');
+                paragraph.innerHTML = `${i}<br>${dateString}`;
+
+                link.appendChild(img);
+                thumbnailDiv.appendChild(link);
+                thumbnailDiv.appendChild(paragraph);
+
+                galleryDiv.appendChild(thumbnailDiv);
+            }
+        </script>
+    </div>
+</body>
+</html>

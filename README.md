@@ -9,9 +9,9 @@ Considero desnecessário (até inútil) o resumo apresentado no site da revista,
 reportagem de capa no thumbnail, bastará acessar seu índice na pg. 3 para ficar sabendo logo de cara sobre as matérias ali contidas.
 
 Fique à vontade para linkar esta página ao conteúdo de seu blog ou site sem fins lucrativos. Se for "forkar", não é necessário atribuir; apenas 
-me mande um privado me convidando pra visitá-lo, caso decisa torná-lo público com modificações. ;-)
+me mande um convite para visitá-lo, caso decisa torná-lo público com modificações. ;-)
 
-É expressamente proibido o uso desta página para fins exploratórios e comerciais seja por venda direta, em market places ou leilão virtual.
+É expressamente proibido o uso desta página para fins exploratórios e comerciais, seja por venda direta, em market places ou leilão virtual.
 
 Dica: A opção de baixar os PDF direto do archive.org resulta, infelizmetne em baixíssima resolução, parecendo interpolada por IA ou algo 
 parecido, portanto, recomendo a leitura das mesmas direto do site, com a página maximizada e, através da eliminação do xpath da barra inferior,
